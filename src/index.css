@@ -97,3 +97,84 @@ form h6 {
   border-color: transparent;
   border-radius: 8px;
 }
+
+.dashboard_logo {
+  display: flex;
+  padding-left: 30px;
+  align-items: center;
+}
+header {
+  display: flex;
+  background-color: #fff;
+  height: 50px;
+}
+.union_dashboard_logo {
+  width: 20.63px;
+  height: 20.84px;
+  padding-right: 5px;
+}
+.lendsqr_dashboard_logo {
+  width: 115.37px;
+  height: 30px;
+}
+.dashboard_page {
+  background-color: #e5e5e5;
+  height: 100vh;
+  width: 100%;
+}
+nav {
+  height: 100px;
+  background-color: #fff;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+}
+.logo_search_div {
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+}
+.search_input_div {
+  justify-content: center;
+  align-items: center;
+}
+.search_input {
+  width: 400px;
+  height: 40px;
+  padding-left: 5px;
+}
+.search_button {
+  background-color: #39cdcc;
+  width: 56px;
+  height: 44px;
+  border-color: transparent;
+}
+.dashboard_nav_items {
+  margin-left: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav_items {
+  margin-right: 20px;
+}
+.bell {
+  width: 19.67px;
+  height: 22.74px;
+}
+.profile_image {
+  width: 48px;
+  height: 50px;
+  border-radius: 100%;
+}
+.dropdown {
+  padding-right: 50px;
+}
+aside {
+  position: fixed;
+  left: 0;
+  margin-top: 0.5px;
+  width: 20%;
+  height: 100%;
+  background-color: #fff;
+}
