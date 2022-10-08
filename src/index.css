@@ -174,7 +174,64 @@ aside {
   position: fixed;
   left: 0;
   margin-top: 0.5px;
+  overflow-y: scroll;
+  overflow-x: hidden;
   width: 20%;
-  height: 100%;
+  height: 100vh;
   background-color: #fff;
+}
+.first_aside_option {
+  display: flex;
+  gap: 16px;
+  padding-top: 27px;
+}
+.dashboard_main {
+  padding-top: 27px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.brief_icon {
+  display: flex;
+  flex-direction: column;
+}
+.organizationdropdown_icon {
+  width: 6.57px;
+  height: 11.21px;
+}
+.home_icon {
+  display: flex;
+  flex-direction: column;
+}
+.home_roof {
+  width: 16px;
+  height: 7.55px;
+}
+.home {
+  margin-top: -4px;
+}
+.dashboard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 15px;
+}
+.aside_elements {
+  padding-left: 38x;
+}
+.customers_dashboard {
+  margin-top: 27px;
+}
+.customers_dashboard h6 {
+  margin-top: 38px;
+}
+.aside_div {
+  margin-left: 20px;
+}
+.business_div {
+  margin-top: 27px;
+}
+.Settings_div {
+  margin-top: 27px;
+  margin-bottom: calc(27px + 100px);
 }

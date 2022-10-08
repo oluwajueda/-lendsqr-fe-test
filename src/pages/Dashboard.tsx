@@ -5,6 +5,7 @@ import bell from "../photos/bell.png";
 import searchicon from "../photos/searchicon.png";
 import profileimage from "../photos/profileImage.png";
 import dropicon from "../photos/dropicon.png";
+import Sidebar from "../components/Sidebar";
 
 const Dashboard = () => {
   return (
@@ -32,6 +33,7 @@ const Dashboard = () => {
           <img src={dropicon} alt="" className="nav_items dropdown" />
         </div>
       </nav>
+      <Sidebar />
     </div>
   );
 };
