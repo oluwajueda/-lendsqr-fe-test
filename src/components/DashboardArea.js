@@ -8,6 +8,8 @@ import userdropdown from "../photos/userdropdown.png";
 
 import forward from "../photos/forward.png";
 import backward from "../photos/backward.png";
+import { useGlobalContext } from "../context";
+import Modal from "./Modal";
 
 // const defaultData: IData[] = [];
 
@@ -51,6 +53,7 @@ const DashboardArea = () => {
   //   setUsers(data[page]);
   // }, [page]);
 
+ const {closeModal} = useGlobalContext()
   const { loading, data } = useFetch();
   const [page, setPage] = useState(0);
   const [users, setUsers] = useState([]);
@@ -166,7 +169,8 @@ const DashboardArea = () => {
             );
           })}
           <button onClick={nextPage}  className='arrow-btn'>
-            <img src={forward} alt="" />
+              <img src={forward} alt=""  />
+            
           </button>
         </div>
         )}
