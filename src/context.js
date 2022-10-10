@@ -4,10 +4,16 @@ const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
   const [isModalOpenController, setIsModalOpenController] = useState(false);
+  const [modalController, setModalController] = useState(false);
 
   return (
     <AppContext.Provider
-      value={{ isModalOpenController, setIsModalOpenController }}
+      value={{
+        isModalOpenController,
+        setIsModalOpenController,
+        modalController,
+        setModalController,
+      }}
     >
       {children}
     </AppContext.Provider>
