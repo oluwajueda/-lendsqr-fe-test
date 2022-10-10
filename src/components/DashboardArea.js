@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import userimage from "../photos/userimage.png";
 import User from "./User";
 // import axios from "axios";
@@ -53,10 +53,13 @@ const DashboardArea = () => {
   //   setUsers(data[page]);
   // }, [page]);
 
- const {closeModal} = useGlobalContext()
   const { loading, data } = useFetch();
   const [page, setPage] = useState(0);
   const [users, setUsers] = useState([]);
+
+  const [isModalOpenController, setIsModalOpenController] = useState(false);
+
+  // const { modalController, setModalController } = useGlobalContext();
 
   useEffect(() => {
     if (loading) return;
@@ -88,93 +91,113 @@ const DashboardArea = () => {
     });
   };
 
+  let menuRef = useRef();
+
+  useEffect(() => {
+    let handler = (event) => {
+      if (!menuRef.current.contains(event.target)) {
+        setIsModalOpenController(true);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+  });
+
   return (
-    <div className="dashboard_area">
+    <div ref={menuRef} className="dashboard_area">
       <div className="dashboard_child">
-      <h2 className="dashboard_h2">Users</h2>
-      <div className="box">
-        <div className="box_child">
-          <img src={userimage} alt="" className="box_child_image" />
-          <p>USERS</p>
-          <h4>2,453</h4>
+        <h2 className="dashboard_h2">Users</h2>
+        <div className="box">
+          <div className="box_child">
+            <img src={userimage} alt="" className="box_child_image" />
+            <p>USERS</p>
+            <h4>2,453</h4>
+          </div>
+          <div className="box_child">
+            <img src={userimage} alt="" className="box_child_image" />
+            <p>ACTIVE USERS</p>
+            <h4>2,453</h4>
+          </div>
+          <div className="box_child">
+            <img src={userimage} alt="" className="box_child_image" />
+            <p>USERS WITH LOANS</p>
+            <h4>2,453</h4>
+          </div>
+          <div className="box_child">
+            <img src={userimage} alt="" className="box_child_image" />
+            <p>USERS WITH SAVINGS</p>
+            <h6>2,453</h6>
+          </div>
         </div>
-        <div className="box_child">
-          <img src={userimage} alt="" className="box_child_image" />
-          <p>ACTIVE USERS</p>
-          <h4>2,453</h4>
-        </div>
-        <div className="box_child">
-          <img src={userimage} alt="" className="box_child_image" />
-          <p>USERS WITH LOANS</p>
-          <h4>2,453</h4>
-        </div>
-        <div className="box_child">
-          <img src={userimage} alt="" className="box_child_image" />
-          <p>USERS WITH SAVINGS</p>
-          <h6>2,453</h6>
-        </div>
-      </div>
         <div className="user_whole">
           <div className="user_children">
-        <div className="user_details">
-          <div className="grid_table">
-            <div className="user_single">
-              <p>ORGANIZATION</p>
-              <img src={userdropdown} alt="" />
+            <div className="user_details">
+              <div className="grid_table">
+                <div className="user_single">
+                  <p>ORGANIZATION</p>
+                  <img src={userdropdown} alt="" />
+                </div>
+                <div className="user_single">
+                  <p>USERNAME</p>
+                  <img src={userdropdown} alt="" />
+                </div>
+                <div className="user_single">
+                  <p>EMAIL</p>
+                  <img src={userdropdown} alt="" />
+                </div>
+                <div className="user_single">
+                  <p>PHONE NUMBER</p>
+                  <img src={userdropdown} alt="" />
+                </div>
+                <div className="user_single">
+                  <p>DATE JOINED</p>
+                  <img src={userdropdown} alt="" />
+                </div>
+                <div className="user_single">
+                  <p>STATUS</p>
+                  <img src={userdropdown} alt="" />
+                </div>
+              </div>
             </div>
-            <div className="user_single">
-              <p>USERNAME</p>
-              <img src={userdropdown} alt="" />
-            </div>
-            <div className="user_single">
-              <p>EMAIL</p>
-              <img src={userdropdown} alt="" />
-            </div>
-            <div className="user_single">
-              <p>PHONE NUMBER</p>
-              <img src={userdropdown} alt="" />
-            </div>
-            <div className="user_single">
-              <p>DATE JOINED</p>
-              <img src={userdropdown} alt="" />
-            </div>
-            <div className="user_single">
-              <p>STATUS</p>
-              <img src={userdropdown} alt="" />
+            <div>
+              {users.map((user) => {
+                return (
+                  <User
+                    key={user.id}
+                    {...user}
+                    isModalOpenController={isModalOpenController}
+                  />
+                );
+              })}
             </div>
           </div>
         </div>
-        <div>
-          {users.map((user) => {
-            return <User key={user.id} {...user} />;
-          })}
-            </div>
-            </div>
-      </div>
 
-      {!loading && (
-        <div>
-          <button onClick={prevPage} className='arrow-btn'>
-            <img src={backward} alt="" />
-          </button>
-          {data.map((item, index) => {
-            return (
-              <button
-                key={index}
-                onClick={() => handlePage(index)}
-                className={`page-btn ${index === page ? "active-btn" : null}`}
-              >
-                {index + 1}
-              </button>
-            );
-          })}
-          <button onClick={nextPage}  className='arrow-btn'>
-              <img src={forward} alt=""  />
-            
-          </button>
-        </div>
+        {!loading && (
+          <div>
+            <button onClick={prevPage} className="arrow-btn">
+              <img src={backward} alt="" />
+            </button>
+            {data.map((item, index) => {
+              return (
+                <button
+                  key={index}
+                  onClick={() => handlePage(index)}
+                  className={`page-btn ${index === page ? "active-btn" : null}`}
+                >
+                  {index + 1}
+                </button>
+              );
+            })}
+            <button onClick={nextPage} className="arrow-btn">
+              <img src={forward} alt="" />
+            </button>
+          </div>
         )}
-        </div>
+      </div>
     </div>
   );
 };

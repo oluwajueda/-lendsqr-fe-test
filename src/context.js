@@ -1,41 +1,21 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext, useEffect } from "react";
 
-
-
-const AppContext = React.createContext()
+const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
-    
-    const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isModalOpenController, setIsModalOpenController] = useState(false);
 
-    const openModal = () => {
-        setIsModalOpen(true)
-        console.log('hello');
-    }
-
-    const closeModal = () => {
-        setIsModalOpen(false)
-    }
-
-
-    return (
-        <AppContext.Provider
-            value={{
-                isModalOpen,
-                setIsModalOpen,
-                closeModal,
-                openModal
-        }}
-        
-        >
-            {children}
-        
-        </AppContext.Provider>
-    )
-}
+  return (
+    <AppContext.Provider
+      value={{ isModalOpenController, setIsModalOpenController }}
+    >
+      {children}
+    </AppContext.Provider>
+  );
+};
 
 export const useGlobalContext = () => {
-    return useContext(AppContext)
-}
+  return useContext(AppContext);
+};
 
-export {AppContext, AppProvider}
+export { AppContext, AppProvider };
