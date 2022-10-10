@@ -42,9 +42,6 @@ const User = (user) => {
             className={`${
               isModalOpen ? "modal-overlay show-modal" : "modal-overlay"
             }`}
-            onClick={() => {
-              // setIsModalOpen(false);
-            }}
           >
             <div className='modal_buttons'>
               <img src={modal1} alt='' />
