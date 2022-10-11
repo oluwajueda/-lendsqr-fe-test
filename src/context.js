@@ -4,10 +4,25 @@ const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
   const [isModalOpenController, setIsModalOpenController] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const openSidebar = () => {
+    setIsSidebarOpen(true);
+  };
+  const closeSidebar = () => {
+    setIsSidebarOpen(false);
+  };
 
   return (
     <AppContext.Provider
-      value={{ isModalOpenController, setIsModalOpenController }}
+      value={{
+        isModalOpenController,
+        setIsModalOpenController,
+        isSidebarOpen,
+        setIsSidebarOpen,
+        openSidebar,
+        closeSidebar,
+      }}
     >
       {children}
     </AppContext.Provider>

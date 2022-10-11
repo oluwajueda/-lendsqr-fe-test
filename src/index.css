@@ -276,7 +276,6 @@ aside {
 .dashboard_child {
   width: 95%;
   margin: 0 auto;
-  margin-top: calc(30px+100px);
 }
 
 .dashboard_h2 {
@@ -358,12 +357,10 @@ hr {
 .page-btn {
   width: 0.7rem;
   height: 0.2rem;
-  background: var(--clr-primary-7);
   border-color: transparent;
   border-radius: 5px;
   cursor: pointer;
   margin: 0.5rem;
-  transition: var(--transition);
 }
 .active-btn {
   font-weight: bold;
@@ -412,6 +409,16 @@ hr {
 .modal_div {
   position: relative;
 }
+.sidebar-toggle {
+  display: none;
+}
+.close-btn {
+  display: none;
+}
+.page_btn_div {
+  float: right;
+  margin-top: 7px;
+}
 
 @media only screen and (max-width: 768px) {
   p {
@@ -450,9 +457,7 @@ hr {
     justify-content: space-between;
     height: 50px;
   }
-  .dashboard_area {
-    display: none;
-  }
+
   .aside_div p,
   h5 {
     font-size: 8px;
@@ -468,7 +473,7 @@ hr {
   }
   .first_aside_option {
     gap: 4px;
-    padding-top: 70px;
+    padding-top: 80px;
   }
   .brief_icon {
     width: 8px;
@@ -480,7 +485,7 @@ hr {
     padding-left: 5px;
   }
   .dashboard_nav_items {
-    padding-left: 100px;
+    padding-left: 40px;
   }
   nav {
     height: 50px;
@@ -500,5 +505,72 @@ hr {
   .profile_image {
     width: 30px;
     height: 30px;
+  }
+  .close-btn {
+    padding-top: 50px;
+    color: #000;
+    font-size: 20px;
+    background-color: transparent;
+    background: transparent;
+    margin-top: 2px;
+    float: right;
+    display: block;
+    border-color: transparent;
+  }
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 57%;
+    height: 100%;
+    background-color: #fff;
+    transform: translate(-100%);
+  }
+
+  .show-sidebar {
+    transform: translate(0);
+  }
+  .sidebar-toggle {
+    display: block;
+    margin-left: 5px;
+    border-color: transparent;
+    background-color: transparent;
+    color: #000;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    animation: bounce 2s ease-in-out infinite;
+    margin-right: 15px;
+  }
+  .dashboard_area {
+    width: 95%;
+    height: 100%;
+    margin-left: auto;
+    padding-top: 7%;
+  }
+  .box {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 12px;
+    margin-top: 15px;
+    width: 100%;
+  }
+  .box_child {
+    width: 25%;
+    height: 140px;
+    background-color: #fff;
+    border-radius: 4px;
+    padding-left: 30px;
+    padding-top: 20px;
+  }
+  .dashboard_area h2,
+  p {
+    font-size: 12px;
+  }
+  .page-btn {
+    width: 0.5rem;
+    height: 0.2rem;
+    cursor: pointer;
+    margin: 0.1rem;
   }
 }

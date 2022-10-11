@@ -5,8 +5,11 @@ import bell from "../photos/bell.png";
 import searchicon from "../photos/searchicon.png";
 import profileimage from "../photos/profileImage.png";
 import dropicon from "../photos/dropicon.png";
+import { FaBars } from "react-icons/fa";
+import { useGlobalContext } from "../context";
 
 const Navbar = () => {
+  const { openSidebar } = useGlobalContext();
   return (
     <nav>
       <div className="logo_search_div">
@@ -29,6 +32,11 @@ const Navbar = () => {
         <img src={profileimage} alt="" className="nav_items profile_image" />
         <h6 className="nav_items">Adedeji</h6>
         <img src={dropicon} alt="" className="nav_items dropdown" />
+        <div>
+          <button className="sidebar-toggle" onClick={openSidebar}>
+            <FaBars />
+          </button>
+        </div>
       </div>
     </nav>
   );

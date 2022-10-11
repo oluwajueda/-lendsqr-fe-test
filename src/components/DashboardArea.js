@@ -161,7 +161,7 @@ const DashboardArea = () => {
         </div>
 
         {!loading && (
-          <div>
+          <div className="page_btn_div">
             <button onClick={prevPage} className="arrow-btn">
               <img src={backward} alt="" />
             </button>

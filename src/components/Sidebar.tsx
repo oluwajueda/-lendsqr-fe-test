@@ -4,10 +4,16 @@ import organizeicon2 from "../photos/sidebar_icons/organizationicon2.png";
 import home from "../photos/sidebar_icons/home.png";
 import homeroof from "../photos/sidebar_icons/home.png";
 import organizationdropdown from "../photos/sidebar_icons/organizationdropdown.png";
+import { FaTimes } from "react-icons/fa";
+import { useGlobalContext } from "../context";
 const Sidebar = () => {
+  const { isSidebarOpen, closeSidebar } = useGlobalContext();
   return (
-    <aside>
+    <aside className={`${isSidebarOpen ? "sidebar show-sidebar" : "sidebar"}`}>
       <div className="aside_div">
+        <button className="close-btn" onClick={closeSidebar}>
+          <FaTimes />
+        </button>
         <div className="first_aside_option">
           <div className="brief_icon">
             <img src={organizeicon} alt="" />
