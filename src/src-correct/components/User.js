@@ -3,7 +3,6 @@ import dots from "../photos/dots.png";
 import modal1 from "../photos/modal1.png";
 import modal2 from "../photos/modal2.png";
 import modal3 from "../photos/modal3.png";
-import { Link } from "react-router-dom";
 
 const User = (user) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -22,19 +21,19 @@ const User = (user) => {
   });
 
   return (
-    <div key={user.id} className="user_top_child">
-      <div className="user_child">
-        <p className="user_p">{user.orgName}</p>
-        <p className="user_p">{user.userName}</p>
-        <p className="user_p">{user.email}</p>
-        <p className="user_p">{user.phoneNumber}</p>
-        <p className="user_p">{user.createdAt}</p>
-        <p className="user_p">status</p>
-        <div className="modal_div">
+    <div key={user.id} className='user_top_child'>
+      <div className='user_child'>
+        <p className='user_p'>{user.orgName}</p>
+        <p className='user_p'>{user.userName}</p>
+        <p className='user_p'>{user.email}</p>
+        <p className='user_p'>{user.phoneNumber}</p>
+        <p className='user_p'>{user.createdAt}</p>
+        <p className='user_p'>status</p>
+        <div className='modal_div'>
           <img
             src={dots}
-            className="dots"
-            alt=""
+            className='dots'
+            alt=''
             onClick={() => {
               setIsModalOpen(true);
             }}
@@ -44,18 +43,16 @@ const User = (user) => {
               isModalOpen ? "modal-overlay show-modal" : "modal-overlay"
             }`}
           >
-            <div className="modal_buttons">
-              <Link to={`/dashboard/${user.id}`}>
-                <img src={modal1} alt="" />
-                <p>view Details</p>
-              </Link>
+            <div className='modal_buttons'>
+              <img src={modal1} alt='' />
+              <p>view Details</p>
             </div>
-            <div className="modal_buttons">
-              <img src={modal2} alt="" />
+            <div className='modal_buttons'>
+              <img src={modal2} alt='' />
               <p>Blacklist User</p>
             </div>
-            <div className="modal_buttons">
-              <img src={modal3} alt="" />
+            <div className='modal_buttons'>
+              <img src={modal3} alt='' />
               <p>Activate User</p>
             </div>
           </div>

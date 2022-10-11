@@ -1,18 +1,15 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
-import { Dashboard, LoginPage, SingleDashboard } from "./pages";
+import { Dashboard, LoginPage } from "./pages";
 import React, { useState, Dispatch, SetStateAction } from "react";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<LoginPage />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route
-          path="/dashboard/:singleDashboard"
-          element={<SingleDashboard />}
-        />
+        <Route path="/" element={<LoginPage />} />
+        {/* <Route path="*" element={<Error />} /> */}
       </Routes>
     </BrowserRouter>
   );

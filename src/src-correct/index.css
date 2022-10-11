@@ -190,7 +190,7 @@ nav {
 aside {
   position: fixed;
   left: 0;
-  top: 0;
+  top: 15%;
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -210,7 +210,7 @@ aside {
 .first_aside_option {
   display: flex;
   gap: 16px;
-  padding-top: 130px;
+  padding-top: 27px;
 }
 .dashboard_main {
   padding-top: 27px;
@@ -289,10 +289,9 @@ aside {
   gap: 50px;
   margin-bottom: 25px;
   margin-top: 22px;
-  width: 100%;
 }
 .box_child {
-  width: 25%;
+  width: 220px;
   height: 140px;
   background-color: #fff;
   border-radius: 4px;
@@ -411,73 +410,4 @@ hr {
 }
 .modal_div {
   position: relative;
-}
-
-@media only screen and (max-width: 768px) {
-  p {
-    font-size: 16px;
-  }
-
-  .login_div1 {
-    display: none;
-  }
-  .login_div2_center {
-    width: 100%;
-  }
-  .login_input {
-    width: 90%;
-  }
-  .login_button {
-    width: 90%;
-  }
-  .login_page {
-    display: block;
-  }
-  .login_div2 {
-    width: 90%;
-    margin: 0 auto;
-  }
-  .login_div2_center {
-    text-align: center;
-  }
-  .search_input_div {
-    display: none;
-  }
-  .mobile_div {
-  }
-  nav {
-    display: flex;
-    justify-content: space-between;
-  }
-  .dashboard_area {
-    display: none;
-  }
-  .aside_div p,
-  h5 {
-    font-size: 8px;
-  }
-  .home_roof {
-    width: 8px;
-  }
-  .dashboard {
-    gap: 4px;
-  }
-  .dashboard_main {
-    gap: 4px;
-  }
-  .first_aside_option {
-    gap: 4px;
-  }
-  .brief_icon {
-    width: 8px;
-  }
-  .aside_div {
-    margin-left: 5px;
-  }
-  .dashboard_logo {
-    padding-left: 5px;
-  }
-  .dashboard_nav_items {
-    padding-left: 20px;
-  }
 }

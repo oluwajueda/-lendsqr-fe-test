@@ -9,6 +9,7 @@ import userdropdown from "../photos/userdropdown.png";
 import forward from "../photos/forward.png";
 import backward from "../photos/backward.png";
 import { useGlobalContext } from "../context";
+import Modal from "./Modal";
 
 // const defaultData: IData[] = [];
 
@@ -91,58 +92,58 @@ const DashboardArea = () => {
   };
 
   return (
-    <div className="dashboard_area">
-      <div className="dashboard_child">
-        <h2 className="dashboard_h2">Users</h2>
-        <div className="box">
-          <div className="box_child">
-            <img src={userimage} alt="" className="box_child_image" />
+    <div className='dashboard_area'>
+      <div className='dashboard_child'>
+        <h2 className='dashboard_h2'>Users</h2>
+        <div className='box'>
+          <div className='box_child'>
+            <img src={userimage} alt='' className='box_child_image' />
             <p>USERS</p>
             <h4>2,453</h4>
           </div>
-          <div className="box_child">
-            <img src={userimage} alt="" className="box_child_image" />
+          <div className='box_child'>
+            <img src={userimage} alt='' className='box_child_image' />
             <p>ACTIVE USERS</p>
             <h4>2,453</h4>
           </div>
-          <div className="box_child">
-            <img src={userimage} alt="" className="box_child_image" />
+          <div className='box_child'>
+            <img src={userimage} alt='' className='box_child_image' />
             <p>USERS WITH LOANS</p>
             <h4>2,453</h4>
           </div>
-          <div className="box_child">
-            <img src={userimage} alt="" className="box_child_image" />
+          <div className='box_child'>
+            <img src={userimage} alt='' className='box_child_image' />
             <p>USERS WITH SAVINGS</p>
             <h6>2,453</h6>
           </div>
         </div>
-        <div className="user_whole">
-          <div className="user_children">
-            <div className="user_details">
-              <div className="grid_table">
-                <div className="user_single">
+        <div className='user_whole'>
+          <div className='user_children'>
+            <div className='user_details'>
+              <div className='grid_table'>
+                <div className='user_single'>
                   <p>ORGANIZATION</p>
-                  <img src={userdropdown} alt="" />
+                  <img src={userdropdown} alt='' />
                 </div>
-                <div className="user_single">
+                <div className='user_single'>
                   <p>USERNAME</p>
-                  <img src={userdropdown} alt="" />
+                  <img src={userdropdown} alt='' />
                 </div>
-                <div className="user_single">
+                <div className='user_single'>
                   <p>EMAIL</p>
-                  <img src={userdropdown} alt="" />
+                  <img src={userdropdown} alt='' />
                 </div>
-                <div className="user_single">
+                <div className='user_single'>
                   <p>PHONE NUMBER</p>
-                  <img src={userdropdown} alt="" />
+                  <img src={userdropdown} alt='' />
                 </div>
-                <div className="user_single">
+                <div className='user_single'>
                   <p>DATE JOINED</p>
-                  <img src={userdropdown} alt="" />
+                  <img src={userdropdown} alt='' />
                 </div>
-                <div className="user_single">
+                <div className='user_single'>
                   <p>STATUS</p>
-                  <img src={userdropdown} alt="" />
+                  <img src={userdropdown} alt='' />
                 </div>
               </div>
             </div>
@@ -162,8 +163,8 @@ const DashboardArea = () => {
 
         {!loading && (
           <div>
-            <button onClick={prevPage} className="arrow-btn">
-              <img src={backward} alt="" />
+            <button onClick={prevPage} className='arrow-btn'>
+              <img src={backward} alt='' />
             </button>
             {data.map((item, index) => {
               return (
@@ -176,8 +177,8 @@ const DashboardArea = () => {
                 </button>
               );
             })}
-            <button onClick={nextPage} className="arrow-btn">
-              <img src={forward} alt="" />
+            <button onClick={nextPage} className='arrow-btn'>
+              <img src={forward} alt='' />
             </button>
           </div>
         )}
