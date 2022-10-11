@@ -448,6 +448,7 @@ hr {
   nav {
     display: flex;
     justify-content: space-between;
+    height: 50px;
   }
   .dashboard_area {
     display: none;
@@ -467,6 +468,7 @@ hr {
   }
   .first_aside_option {
     gap: 4px;
+    padding-top: 70px;
   }
   .brief_icon {
     width: 8px;
@@ -478,6 +480,25 @@ hr {
     padding-left: 5px;
   }
   .dashboard_nav_items {
-    padding-left: 20px;
+    padding-left: 100px;
+  }
+  nav {
+    height: 50px;
+  }
+  .union_dashboard_logo {
+    width: 12.63px;
+    height: 12.84px;
+    padding-right: 5px;
+  }
+  .lendsqr_dashboard_logo {
+    width: 60.37px;
+    height: 17px;
+  }
+  .bell {
+    width: 15px;
+  }
+  .profile_image {
+    width: 30px;
+    height: 30px;
   }
 }
