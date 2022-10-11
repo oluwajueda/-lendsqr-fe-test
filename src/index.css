@@ -557,7 +557,7 @@ hr {
     justify-content: center;
     cursor: pointer;
     animation: bounce 2s ease-in-out infinite;
-    margin-right: 15px;
+    margin-right: 40px;
   }
   .dashboard_area {
     width: 100%;
