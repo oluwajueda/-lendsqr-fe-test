@@ -7,6 +7,28 @@ import { Link } from "react-router-dom";
 
 const User = (user) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const [activate, setActivate] = useState(false);
+  const [blacklist, setBlacklist] = useState(false);
+  const [inactive, setInactive] = useState(true);
+
+  const activateUser = () => {
+    setActivate(true);
+  };
+
+  const blacklistUser = () => {
+    setBlacklist(true);
+  };
+
+  const renderStatus = () => {
+    if (activate) {
+      return <button className="activate status_btn">activate</button>;
+    } else if (blacklist) {
+      return <button className="blacklist status_btn">Blacklisted</button>;
+    }
+    return <button className="inactive status_btn">Inactive</button>;
+  };
+
   useEffect(() => {
     const modalHandler = (e) => {
       const modalOpener = e.target.classList.contains("dots");
@@ -24,12 +46,12 @@ const User = (user) => {
   return (
     <div key={user.id} className="user_top_child">
       <div className="user_child">
-        <p className="user_p">{user.orgName}</p>
-        <p className="user_p">{user.userName}</p>
-        <p className="user_p">{user.email}</p>
-        <p className="user_p">{user.phoneNumber}</p>
-        <p className="user_p">{user.createdAt}</p>
-        <p className="user_p">status</p>
+        <p className="user_p">{user.orgName.slice(0, 8)}...</p>
+        <p className="user_p">{user.userName.slice(0, 7)}</p>
+        <p className="user_p">{user.email.slice(0, 8)}...</p>
+        <p className="user_p phone">{user.phoneNumber.slice(0, 8)}...</p>
+        <p className="user_p">{user.createdAt.slice(0, 8)}...</p>
+        <div>{renderStatus()}</div>
         <div className="modal_div">
           <img
             src={dots}
@@ -50,11 +72,11 @@ const User = (user) => {
                 <p>view Details</p>
               </Link>
             </div>
-            <div className="modal_buttons">
+            <div className="modal_buttons" onClick={blacklistUser}>
               <img src={modal2} alt="" />
               <p>Blacklist User</p>
             </div>
-            <div className="modal_buttons">
+            <div className="modal_buttons" onClick={activateUser}>
               <img src={modal3} alt="" />
               <p>Activate User</p>
             </div>

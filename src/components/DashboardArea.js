@@ -122,27 +122,27 @@ const DashboardArea = () => {
               <div className="grid_table">
                 <div className="user_single">
                   <p>ORGANIZATION</p>
-                  <img src={userdropdown} alt="" />
+                  <img src={userdropdown} alt="" className="userdropdown" />
                 </div>
                 <div className="user_single">
                   <p>USERNAME</p>
-                  <img src={userdropdown} alt="" />
+                  <img src={userdropdown} alt="" className="userdropdown" />
                 </div>
                 <div className="user_single">
                   <p>EMAIL</p>
-                  <img src={userdropdown} alt="" />
+                  <img src={userdropdown} alt="" className="userdropdown" />
                 </div>
                 <div className="user_single">
-                  <p>PHONE NUMBER</p>
-                  <img src={userdropdown} alt="" />
+                  <p className="phone">PHONE NUMBER</p>
+                  <img src={userdropdown} alt="" className="userdropdown" />
                 </div>
                 <div className="user_single">
                   <p>DATE JOINED</p>
-                  <img src={userdropdown} alt="" />
+                  <img src={userdropdown} alt="" className="userdropdown" />
                 </div>
                 <div className="user_single">
                   <p>STATUS</p>
-                  <img src={userdropdown} alt="" />
+                  <img src={userdropdown} alt="" className="userdropdown" />
                 </div>
               </div>
             </div>
