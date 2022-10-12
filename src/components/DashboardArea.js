@@ -8,6 +8,8 @@ import userdropdown from "../photos/userdropdown.png";
 
 import forward from "../photos/forward.png";
 import backward from "../photos/backward.png";
+import activeuser from "../photos/activeuser.png";
+import userwithloan from "../photos/userwithloan.png";
 import { useGlobalContext } from "../context";
 import OrganizationDropdown from "./OrganizationDropdown";
 
@@ -69,22 +71,31 @@ const DashboardArea = () => {
         <h2 className="dashboard_h2">Users</h2>
         <div className="box">
           <div className="box_child">
-            <img src={userimage} alt="" className="box_child_image" />
+            <img src={userimage} alt="" className="box_child_image image-1  " />
+
             <p className="box_p">USERS</p>
             <h4>2,453</h4>
           </div>
           <div className="box_child">
-            <img src={userimage} alt="" className="box_child_image" />
+            <img src={activeuser} alt="" className="box_child_image image-2" />
             <p className="box_p">ACTIVE USERS</p>
             <h4>2,453</h4>
           </div>
           <div className="box_child">
-            <img src={userimage} alt="" className="box_child_image" />
+            <img
+              src={userwithloan}
+              alt=""
+              className="box_child_image image-3"
+            />
             <p className="box_p">USERS WITH LOANS</p>
             <h4>2,453</h4>
           </div>
           <div className="box_child">
-            <img src={userimage} alt="" className="box_child_image" />
+            <img
+              src={userwithloan}
+              alt=""
+              className="box_child_image image-4"
+            />
             <p className="box_p">USERS WITH SAVINGS</p>
             <h4>2,453</h4>{" "}
           </div>
