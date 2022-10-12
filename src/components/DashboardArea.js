@@ -9,56 +9,15 @@ import userdropdown from "../photos/userdropdown.png";
 import forward from "../photos/forward.png";
 import backward from "../photos/backward.png";
 import { useGlobalContext } from "../context";
-
-// const defaultData: IData[] = [];
+import OrganizationDropdown from "./OrganizationDropdown";
 
 const DashboardArea = () => {
-  // const [data, setData]: [IData[], (data: IData[]) => void] =
-  //   React.useState(defaultData);
-
-  // const [loading, setLoading]: [boolean, (loading: boolean) => void] =
-  //   React.useState<boolean>(true);
-
-  // const [error, setError]: [string, (error: string) => void] =
-  //   React.useState("");
-  // const [page, setPage]: [number, (page: number) => void] = useState<number>(0);
-  // const [users, setUsers]: any[] = useState([]);
-
-  // React.useEffect(() => {
-  //   axios
-  //     .get<IData[]>(url, {
-  //       headers: {
-  //         "Content-type": "application/json",
-  //       },
-  //     })
-  //     .then((response) => {
-  //       const newData = response.data;
-  //       setData(paginate(newData));
-  //       console.log(newData);
-
-  //       setLoading(false);
-  //     })
-  //     .catch((ex) => {
-  //       const error =
-  //         ex.response.status === 404
-  //           ? "Resource Not found"
-  //           : "An unexpected error has occured";
-  //       setError(error);
-  //       setLoading(false);
-  //     });
-  // }, []);
-
-  // useEffect(() => {
-  //   setUsers(data[page]);
-  // }, [page]);
-
   const { loading, data } = useFetch();
   const [page, setPage] = useState(0);
   const [users, setUsers] = useState([]);
+  const [organization, setOrganization] = useState(false);
 
   const [isModalOpenController, setIsModalOpenController] = useState(false);
-
-  // const { modalController, setModalController } = useGlobalContext();
 
   useEffect(() => {
     if (loading) return;
@@ -90,6 +49,20 @@ const DashboardArea = () => {
     });
   };
 
+  useEffect(() => {
+    const modalHandler = (e) => {
+      const modalOpener = e.target.classList.contains("userdropdown");
+      const modalContainer = e.target.classList.contains("show-modal");
+      if (organization) {
+        if (!modalOpener && !modalContainer) {
+          setOrganization(false);
+        }
+      }
+    };
+    document.addEventListener("click", modalHandler);
+    return () => document.removeEventListener("click", modalHandler);
+  });
+
   return (
     <div className="dashboard_area">
       <div className="dashboard_child">
@@ -97,51 +70,100 @@ const DashboardArea = () => {
         <div className="box">
           <div className="box_child">
             <img src={userimage} alt="" className="box_child_image" />
-            <p>USERS</p>
+            <p className="box_p">USERS</p>
             <h4>2,453</h4>
           </div>
           <div className="box_child">
             <img src={userimage} alt="" className="box_child_image" />
-            <p>ACTIVE USERS</p>
+            <p className="box_p">ACTIVE USERS</p>
             <h4>2,453</h4>
           </div>
           <div className="box_child">
             <img src={userimage} alt="" className="box_child_image" />
-            <p>USERS WITH LOANS</p>
+            <p className="box_p">USERS WITH LOANS</p>
             <h4>2,453</h4>
           </div>
           <div className="box_child">
             <img src={userimage} alt="" className="box_child_image" />
-            <p>USERS WITH SAVINGS</p>
-            <h6>2,453</h6>
+            <p className="box_p">USERS WITH SAVINGS</p>
+            <h4>2,453</h4>{" "}
           </div>
         </div>
         <div className="user_whole">
           <div className="user_children">
             <div className="user_details">
               <div className="grid_table">
+                <div className="user_single organization">
+                  <h5>ORGANIZATION</h5>
+                  <img
+                    src={userdropdown}
+                    alt=""
+                    className="userdropdown"
+                    onClick={() => {
+                      setOrganization(true);
+                    }}
+                  />
+                  <div
+                    className={`${
+                      organization
+                        ? "modal-overlay show-modal form-modal"
+                        : "modal-overlay"
+                    }`}
+                  >
+                    <form>
+                      <div className="form_row">
+                        <label className="form_label">organization</label>
+                        <select className="form_input">
+                          <option>Select</option>
+                        </select>
+                      </div>
+                      <div className="form_row">
+                        <label className="form_label">Username</label>
+                        <input placeholder="User" className="form_input" />
+                      </div>
+
+                      <div className="form_row">
+                        <label className="form_label">Email</label>
+                        <input placeholder="Email" className="form_input" />
+                      </div>
+                      <div className="form_row">
+                        <label className="form_label">Date</label>
+                        <input placeholder="Date" className="form_input" />
+                      </div>
+                      <div className="form_row">
+                        <label className="form_label">Phone Number</label>
+                        <input
+                          placeholder="Phone Number"
+                          className="form_input"
+                        />
+                      </div>
+                      <div className="form_row">
+                        <label className="form_label">Status</label>
+                        <select className="form_input">
+                          <option>Select</option>
+                        </select>
+                      </div>
+                    </form>
+                  </div>
+                </div>
                 <div className="user_single">
-                  <p>ORGANIZATION</p>
+                  <h5>USERNAME</h5>
                   <img src={userdropdown} alt="" className="userdropdown" />
                 </div>
                 <div className="user_single">
-                  <p>USERNAME</p>
+                  <h5>EMAIL</h5>
                   <img src={userdropdown} alt="" className="userdropdown" />
                 </div>
                 <div className="user_single">
-                  <p>EMAIL</p>
+                  <h5 className="phone">PHONE NUMBER</h5>
                   <img src={userdropdown} alt="" className="userdropdown" />
                 </div>
                 <div className="user_single">
-                  <p className="phone">PHONE NUMBER</p>
+                  <h5>DATE JOINED</h5>
                   <img src={userdropdown} alt="" className="userdropdown" />
                 </div>
                 <div className="user_single">
-                  <p>DATE JOINED</p>
-                  <img src={userdropdown} alt="" className="userdropdown" />
-                </div>
-                <div className="user_single">
-                  <p>STATUS</p>
+                  <h5>STATUS</h5>
                   <img src={userdropdown} alt="" className="userdropdown" />
                 </div>
               </div>
@@ -159,28 +181,39 @@ const DashboardArea = () => {
             </div>
           </div>
         </div>
-
-        {!loading && (
-          <div className="page_btn_div">
-            <button onClick={prevPage} className="arrow-btn">
-              <img src={backward} alt="" />
-            </button>
-            {data.map((item, index) => {
-              return (
-                <button
-                  key={index}
-                  onClick={() => handlePage(index)}
-                  className={`page-btn ${index === page ? "active-btn" : null}`}
-                >
-                  {index + 1}
-                </button>
-              );
-            })}
-            <button onClick={nextPage} className="arrow-btn">
-              <img src={forward} alt="" />
-            </button>
+        <div className="last_part">
+          <div className="showing">
+            <p>Showing</p>
+            <select className="select">
+              <option>100</option>
+            </select>
+            <p>out of 100</p>
           </div>
-        )}
+
+          {!loading && (
+            <div className="page_btn_div">
+              <button onClick={prevPage} className="arrow-btn">
+                <img src={backward} alt="" />
+              </button>
+              {data.map((item, index) => {
+                return (
+                  <button
+                    key={index}
+                    onClick={() => handlePage(index)}
+                    className={`page-btn ${
+                      index === page ? "active-btn" : null
+                    }`}
+                  >
+                    {index + 1}
+                  </button>
+                );
+              })}
+              <button onClick={nextPage} className="arrow-btn">
+                <img src={forward} alt="" />
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
