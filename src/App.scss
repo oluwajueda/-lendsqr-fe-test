@@ -1070,6 +1070,11 @@ hr {
   p {
     font-size: 8px;
   }
+  .user_single h5 {
+    color: $grey-like;
+    padding-right: 3px;
+    font-size: 10px;
+  }
 }
 
 @media only screen and (max-width: 1259px) {
