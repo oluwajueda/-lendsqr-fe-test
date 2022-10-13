@@ -11,6 +11,7 @@ import backward from "../photos/backward.png";
 import activeuser from "../photos/activeuser.png";
 import lastcoin from "../photos/lastcoin.png";
 import { BiCoinStack } from "react-icons/bi";
+import { FaTimes } from "react-icons/fa";
 
 const DashboardArea = () => {
   const { loading, data } = useFetch();
@@ -18,13 +19,19 @@ const DashboardArea = () => {
   const [users, setUsers] = useState([]);
   const [organization, setOrganization] = useState(false);
 
+  const [pageNumber, setPageNumber] = useState(1);
+  const [postNumber] = useState(10);
+
+  const currentPageNumber = pageNumber * postNumber - postNumber;
+  const paginatedPosts = users.slice(currentPageNumber, postNumber);
+
   const [isModalOpenController, setIsModalOpenController] = useState(false);
 
   useEffect(() => {
     if (loading) return;
-    setUsers(data[page]);
+    setUsers(data);
     console.log(users);
-  }, [loading, data]);
+  }, [loading]);
 
   const handlePage = (index) => {
     setPage(index);
@@ -40,54 +47,42 @@ const DashboardArea = () => {
     });
   };
   const prevPage = () => {
-    console.log("hello");
     setPage((oldPage) => {
       let prevPage = oldPage - 1;
-      if (prevPage > data.length - 1) {
-        prevPage = data.length - 1;
+      if (prevPage < 0) {
+        prevPage = data.lenth - 1;
       }
       return prevPage;
     });
   };
 
-  useEffect(() => {
-    const modalHandler = (e) => {
-      const modalOpener = e.target.classList.contains("userdropdown");
-      const modalContainer = e.target.classList.contains("show-modal");
-      if (organization) {
-        if (!modalOpener && !modalContainer) {
-          setOrganization(false);
-        }
-      }
-    };
-    document.addEventListener("click", modalHandler);
-    return () => document.removeEventListener("click", modalHandler);
-  });
-
+  const closeForm = () => {
+    setOrganization(false);
+  };
   return (
-    <div className="dashboard_area">
-      <div className="dashboard_child">
-        <h2 className="dashboard_h2">Users</h2>
-        <div className="box">
+    <div className="dashboardarea">
+      <div className="dashboardarea_child">
+        <h2 className="dashboardarea_h2">Users</h2>
+        <div className="dashboardarea_box">
           <div className="box_child">
             <img src={userimage} alt="" className="box_child_image image-1  " />
 
-            <p className="box_p">USERS</p>
+            <p className="dashboardarea_box_p">USERS</p>
             <h4>2,453</h4>
           </div>
-          <div className="box_child">
+          <div className="dashboardarea_box_child">
             <img src={activeuser} alt="" className="box_child_image image-2" />
-            <p className="box_p">ACTIVE USERS</p>
+            <p className="dashboardarea_box_p">ACTIVE USERS</p>
             <h4>2,453</h4>
           </div>
-          <div className="box_child">
+          <div className="dashboardarea_box_child">
             <BiCoinStack className="box_child_image image-3" />
-            <p className="box_p">USERS WITH LOANS</p>
+            <p className="dashboardarea_box_p">USERS WITH LOANS</p>
             <h4>2,453</h4>
           </div>
-          <div className="box_child">
+          <div className="dashboardarea_box_child">
             <BiCoinStack className="box_child_image image-4" />
-            <p className="box_p">USERS WITH SAVINGS</p>
+            <p className="dashboardarea_box_p">USERS WITH SAVINGS</p>
             <h4>2,453</h4>{" "}
           </div>
         </div>
@@ -112,7 +107,8 @@ const DashboardArea = () => {
                         : "organization-overlay"
                     }`}
                   >
-                    <form>
+                    <FaTimes className="close" onClick={closeForm} />
+                    <form className="form">
                       <div className="form_row">
                         <label className="form_label">organization</label>
                         <select className="form_input">
@@ -146,6 +142,10 @@ const DashboardArea = () => {
                         </select>
                       </div>
                     </form>
+                    <div className="form_btn">
+                      <button className="white_btn">Reset</button>
+                      <button className="green_btn">Filter</button>
+                    </div>
                   </div>
                 </div>
                 <div className="user_single">
@@ -171,7 +171,7 @@ const DashboardArea = () => {
               </div>
             </div>
             <div>
-              {users.map((user) => {
+              {paginatedPosts.map((user) => {
                 return (
                   <User
                     key={user.id}
@@ -197,7 +197,7 @@ const DashboardArea = () => {
               <button onClick={prevPage} className="arrow-btn">
                 <img src={backward} alt="" />
               </button>
-              {data.map((item, index) => {
+              {paginatedPosts.map((item, index) => {
                 return (
                   <button
                     key={index}

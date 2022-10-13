@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./index.css";
+import "./App.scss";
 import { Dashboard, LoginPage, SingleDashboard } from "./pages";
-import React, { useState, Dispatch, SetStateAction } from "react";
 
 function App() {
   return (

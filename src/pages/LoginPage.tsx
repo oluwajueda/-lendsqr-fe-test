@@ -28,13 +28,13 @@ const LoginPage = () => {
   });
 
   return (
-    <div className="login_page">
+    <div className="login">
       <div className="login_div1">
-        <div className="logo-icon">
-          <img className="union_logo" src={union} alt="" />
-          <img className="lendsqr_logo" src={lendsqr} alt="" />
+        <div className="login_logo_icon">
+          <img className="login_union_logo" src={union} alt="" />
+          <img className="login_lendsqr_logo" src={lendsqr} alt="" />
         </div>
-        <div className="center_avatar">
+        <div className="login_center_avatar">
           <img className="login_avatar" src={avatar} alt="" />
         </div>
       </div>
