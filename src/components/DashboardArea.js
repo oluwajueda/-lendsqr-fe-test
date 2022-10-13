@@ -19,19 +19,13 @@ const DashboardArea = () => {
   const [users, setUsers] = useState([]);
   const [organization, setOrganization] = useState(false);
 
-  const [pageNumber, setPageNumber] = useState(1);
-  const [postNumber] = useState(10);
-
-  const currentPageNumber = pageNumber * postNumber - postNumber;
-  const paginatedPosts = users.slice(currentPageNumber, postNumber);
-
   const [isModalOpenController, setIsModalOpenController] = useState(false);
 
   useEffect(() => {
     if (loading) return;
-    setUsers(data);
+    setUsers(data[page]);
     console.log(users);
-  }, [loading]);
+  }, [loading, data, page]);
 
   const handlePage = (index) => {
     setPage(index);
@@ -47,10 +41,11 @@ const DashboardArea = () => {
     });
   };
   const prevPage = () => {
+    console.log("hello");
     setPage((oldPage) => {
       let prevPage = oldPage - 1;
-      if (prevPage < 0) {
-        prevPage = data.lenth - 1;
+      if (prevPage > data.length - 1) {
+        prevPage = data.length - 1;
       }
       return prevPage;
     });
@@ -64,7 +59,7 @@ const DashboardArea = () => {
       <div className="dashboardarea_child">
         <h2 className="dashboardarea_h2">Users</h2>
         <div className="dashboardarea_box">
-          <div className="box_child">
+          <div className="dashboardarea_box_child">
             <img src={userimage} alt="" className="box_child_image image-1  " />
 
             <p className="dashboardarea_box_p">USERS</p>
@@ -171,7 +166,7 @@ const DashboardArea = () => {
               </div>
             </div>
             <div>
-              {paginatedPosts.map((user) => {
+              {users.map((user) => {
                 return (
                   <User
                     key={user.id}
@@ -197,7 +192,7 @@ const DashboardArea = () => {
               <button onClick={prevPage} className="arrow-btn">
                 <img src={backward} alt="" />
               </button>
-              {paginatedPosts.map((item, index) => {
+              {data.map((item, index) => {
                 return (
                   <button
                     key={index}

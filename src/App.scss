@@ -295,6 +295,7 @@ p {
   background-color: #e5e5e5;
   margin-left: auto;
   padding-top: 7%;
+  min-height: 100vh;
 
   &_child {
     width: 95%;
@@ -775,7 +776,7 @@ hr {
 
   .aside_div p,
   h5 {
-    font-size: 8px;
+    font-size: 14px;
   }
   .home_roof {
     width: 8px;
@@ -794,7 +795,7 @@ hr {
     width: 8px;
   }
   .aside_div {
-    margin-left: 5px;
+    margin-left: 20px;
   }
   .navbar_logo {
     padding-left: 5px;
