@@ -46,11 +46,11 @@ const User = (user) => {
   return (
     <div key={user.id} className="user_top_child">
       <div className="user_child">
-        <p className="user_p">{user.orgName.slice(0, 8)}...</p>
-        <p className="user_p">{user.userName.slice(0, 7)}...</p>
-        <p className="user_p">{user.email.slice(0, 8)}...</p>
-        <p className="user_p phone">{user.phoneNumber.slice(0, 8)}...</p>
-        <p className="user_p">{user.createdAt.slice(0, 8)}...</p>
+        <p className="user_p">{user.orgName}</p>
+        <p className="user_p">{user.userName}</p>
+        <p className="user_p email">{user.email}</p>
+        <p className="user_p email">{user.phoneNumber}</p>
+        <p className="user_p date_join">{user.createdAt}</p>
         <div>{renderStatus()}</div>
         <div className="modal_div">
           <img

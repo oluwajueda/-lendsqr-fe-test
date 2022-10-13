@@ -9,9 +9,8 @@ import userdropdown from "../photos/userdropdown.png";
 import forward from "../photos/forward.png";
 import backward from "../photos/backward.png";
 import activeuser from "../photos/activeuser.png";
-import userwithloan from "../photos/userwithloan.png";
-import { useGlobalContext } from "../context";
-import OrganizationDropdown from "./OrganizationDropdown";
+import lastcoin from "../photos/lastcoin.png";
+import { BiCoinStack } from "react-icons/bi";
 
 const DashboardArea = () => {
   const { loading, data } = useFetch();
@@ -82,20 +81,12 @@ const DashboardArea = () => {
             <h4>2,453</h4>
           </div>
           <div className="box_child">
-            <img
-              src={userwithloan}
-              alt=""
-              className="box_child_image image-3"
-            />
+            <BiCoinStack className="box_child_image image-3" />
             <p className="box_p">USERS WITH LOANS</p>
             <h4>2,453</h4>
           </div>
           <div className="box_child">
-            <img
-              src={userwithloan}
-              alt=""
-              className="box_child_image image-4"
-            />
+            <BiCoinStack className="box_child_image image-4" />
             <p className="box_p">USERS WITH SAVINGS</p>
             <h4>2,453</h4>{" "}
           </div>
@@ -117,8 +108,8 @@ const DashboardArea = () => {
                   <div
                     className={`${
                       organization
-                        ? "modal-overlay show-modal form-modal"
-                        : "modal-overlay"
+                        ? "organization-overlay show-modal form-modal"
+                        : "organization-overlay"
                     }`}
                   >
                     <form>
@@ -161,15 +152,15 @@ const DashboardArea = () => {
                   <h5>USERNAME</h5>
                   <img src={userdropdown} alt="" className="userdropdown" />
                 </div>
-                <div className="user_single">
+                <div className="user_single email">
                   <h5>EMAIL</h5>
                   <img src={userdropdown} alt="" className="userdropdown" />
                 </div>
-                <div className="user_single">
-                  <h5 className="phone">PHONE NUMBER</h5>
+                <div className="user_single email">
+                  <h5 className="phone ">PHONE NUMBER</h5>
                   <img src={userdropdown} alt="" className="userdropdown" />
                 </div>
-                <div className="user_single">
+                <div className="user_single date_join">
                   <h5>DATE JOINED</h5>
                   <img src={userdropdown} alt="" className="userdropdown" />
                 </div>
