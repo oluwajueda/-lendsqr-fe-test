@@ -1,34 +1,34 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 import { Link } from "react-router-dom";
-import { useFetch } from "../components/useFetch.js";
 import Sidebar from "../components/Sidebar";
-import DashboardArea from "../components/DashboardArea";
 import Navbar from "../components/Navbar";
-import SingleUser from "../components/SingleUser.js";
 import back from "../photos/backbutton.png";
 import star1 from "../photos/star1.png";
 import star2 from "../photos/star2.png";
 
+const infoFromLocalStorage = JSON.parse(localStorage.getItem("info") || null);
+
 const SingleDashboard = () => {
   const { singleDashboard } = useParams();
 
-  const [data, setData] = useState({});
+  const [info, setInfo] = useState(infoFromLocalStorage);
 
   const url = `https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users/${singleDashboard}`;
-  console.log(url);
-
-  const getUsers = async () => {
-    const response = await fetch(url);
-
-    const data = await response.json();
-    setData(data);
-    console.log(data);
-  };
 
   useEffect(() => {
-    getUsers();
+    axios.get(url).then((response) => {
+      setInfo(response.data);
+      localStorage.setItem("user", JSON.stringify(info));
+    });
   }, []);
+
+  // useEffect(() => {
+
+  // })
+
+  if (!info) return null;
 
   return (
     <div className="dashboard_page">
@@ -56,17 +56,19 @@ const SingleDashboard = () => {
             </div>
             <div className="single_first_div">
               <div className="single_first_group">
-                <img src={data.profile.avatar} alt="" className="avatar" />
+                <img src={info.profile.avatar} alt="" className="avatar" />
                 <div>
                   <h4>
-                    {/* <span className="single_profile_name">{profile.firstName}</span>
-              <span>{data.profile.lastName}</span> */}
+                    <span className="single_profile_name bold">
+                      {info.profile.firstName}
+                    </span>
+                    <span className="bold">{info.profile.lastName}</span>
                   </h4>
-                  {/* <p>{accountNumber}</p> */}
-                  {/* <p>{accountNumber}</p> */}
+
+                  <p className="bold">{info.accountNumber}</p>
                 </div>
-                <div className="vertical_line"></div>
-                <div>
+                <div className="vertical_line first_line"></div>
+                <div className="user_tier">
                   <p>User's Tier</p>
                   <div className="star">
                     <img src={star1} alt="" />
@@ -76,7 +78,7 @@ const SingleDashboard = () => {
                 </div>
                 <div className="vertical_line"></div>
                 <div>
-                  {/* <h4>{accountBalance}</h4> */}
+                  <h4 className="bold">{info.accountBalance}</h4>
                   <p>9912345678/Providus Bank</p>
                 </div>
               </div>
@@ -96,41 +98,39 @@ const SingleDashboard = () => {
                   <div>
                     <p>FULL NAME</p>
                     <p>
-                      <span className="single_profile_name">
-                        {data.profile.firstName}
+                      <span className="single_profile_name bold">
+                        {info.profile.firstName}
                       </span>
-                      <span>{data.profile.lastName}</span>
+                      <span className="bold">{info.profile.lastName}</span>
                     </p>
                   </div>
                   <div>
                     <p>PHONE NUMBER</p>
-                    {/* <p>{phoneNumber}</p> */}
+                    <p className="bold">{info.phoneNumber}</p>
                   </div>
                   <div>
                     <p>EMAIL ADDRESS</p>
-                    {/* <p>{email}</p> */}
+                    <p className="bold">{info.email}</p>
                   </div>
                   <div>
                     <p>BVN</p>
-                    {/* <p>{bvn}</p> */}
+                    <p className="bold">{info.profile.bvn}</p>
                   </div>
                   <div>
                     <p>GENDER</p>
-                    {/* <p>{gender}</p> */}
+                    <p className="bold">{info.profile.gender}</p>
                   </div>
-                </div>
-                <div className="single_second_group1">
                   <div>
                     <p>MARITAL STATUS</p>
-                    <p>Single</p>
+                    <p className="bold">Single</p>
                   </div>
                   <div>
                     <p>CHILDREN</p>
-                    <p>None</p>
+                    <p className="bold">None</p>
                   </div>
                   <div>
                     <p>TYPE OF RESIDENCE</p>
-                    <p>Parent's Apartment</p>
+                    <p className="bold">Parent's Apartment</p>
                   </div>
                 </div>
                 <div className="single_horizontal_line"></div>
@@ -140,33 +140,35 @@ const SingleDashboard = () => {
                 <div className="single_second_group1">
                   <div>
                     <p>LEVEL OF EDUCATION</p>
-                    {/* <p>{level}</p> */}
+                    <p className="bold">{info.education.level}</p>
                   </div>
                   <div>
                     <p>EMPLOYMENT STATUS</p>
-                    {/* <p>{employmentStatus}</p> */}
+                    <p className="bold">{info.education.employmentStatus}</p>
                   </div>
                   <div>
                     <p>SECTOR OF EMPLOYMENT</p>
-                    {/* <p>{sector}</p> */}
+                    <p className="bold">{info.education.sector}</p>
                   </div>
                   <div>
                     <p>DURATION OF EMPLOMENT</p>
-                    {/* <p>{duration}</p> */}
+                    <p className="bold">{info.education.duration}</p>
                   </div>
-                </div>
-                <div className="single_second_group1">
+
                   <div>
                     <p>OFFICE EMAIL</p>
-                    {/* <p>{officeEmail}</p> */}
+                    <p className="bold">{info.education.officeEmail}</p>
                   </div>
                   <div>
                     <p>MONHLY INCOME</p>
-                    <p>{/* {monthlyIncome[0]}- {monthlyIncome[1]} */}</p>
+                    <p className="bold">
+                      {info.education.monthlyIncome[0]}-{" "}
+                      {info.education.monthlyIncome[1]}
+                    </p>
                   </div>
                   <div>
                     <p>LOAN REPAYMENT</p>
-                    {/* <p>{loanRepayment}</p> */}
+                    <p className="bold">{info.education.loanRepayment}</p>
                   </div>
                 </div>
                 <div className="single_horizontal_line"></div>
@@ -176,15 +178,15 @@ const SingleDashboard = () => {
                 <div className="single_second_group1">
                   <div>
                     <p>TWITTER</p>
-                    {/* <p>{twitter}</p> */}
+                    <p className="bold">{info.socials.twitter}</p>
                   </div>
                   <div>
                     <p>FACEBOOK</p>
-                    {/* <p>{facebook}</p> */}
+                    <p className="bold">{info.socials.facebook}</p>
                   </div>
                   <div>
                     <p>INSTAGRAM</p>
-                    {/* <p>{instagram}</p> */}
+                    <p className="bold">{info.socials.instagram}</p>
                   </div>
                 </div>
                 <div className="single_horizontal_line"></div>
@@ -195,19 +197,19 @@ const SingleDashboard = () => {
                   <div>
                     <p>FULL NAME</p>
                     <p>
-                      {/* <span className="single_profile_name">
-                  {guarantorFirstName}
-                </span>
-                <span>{guarantorLastName}</span> */}
+                      <span className="single_profile_name bold">
+                        {info.guarantor.firstName}
+                      </span>
+                      <span className="bold">{info.guarantor.lasttName}</span>
                     </p>
                   </div>
                   <div>
                     <p>PHONE NUMBER</p>
-                    {/* <p>{guarantorPhoneNumber}</p> */}
+                    <p className="bold">{info.guarantor.phoneNumber}</p>
                   </div>
                   <div>
                     <p>GENDER</p>
-                    {/* <p>{guarantorGender}</p> */}
+                    <p className="bold">{info.guarantor.gender}</p>
                   </div>
                 </div>
               </div>

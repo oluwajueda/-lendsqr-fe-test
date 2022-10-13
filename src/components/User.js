@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import dots from "../photos/dots.png";
-import modal1 from "../photos/modal1.png";
 import modal2 from "../photos/modal2.png";
 import modal3 from "../photos/modal3.png";
+import modal1 from "../photos/eyes.png";
 import { Link } from "react-router-dom";
 
 const User = (user) => {
@@ -66,8 +66,8 @@ const User = (user) => {
               isModalOpen ? "modal-overlay show-modal" : "modal-overlay"
             }`}
           >
-            <div className="modal_buttons">
-              <Link to={`/dashboard/${user.id}`}>
+            <div>
+              <Link to={`/dashboard/${user.id}`} className="modal_buttons link">
                 <img src={modal1} alt="" />
                 <p>view Details</p>
               </Link>
