@@ -458,6 +458,7 @@ hr {
   border-radius: 5px;
   cursor: pointer;
   margin: 0.5rem;
+  padding: 0.2rem;
 }
 .active-btn {
   font-weight: bold;
@@ -692,8 +693,7 @@ hr {
   z-index: 10;
 }
 .last_part {
-  display: flex;
-  justify-content: space-between;
+  margin-left: auto;
   padding-bottom: 40px;
   padding-top: 12px;
 }
@@ -845,6 +845,7 @@ hr {
 
   .show-sidebar {
     transform: translate(0);
+    z-index: 20;
   }
   .sidebar-toggle {
     display: block;

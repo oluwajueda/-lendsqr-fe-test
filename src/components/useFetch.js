@@ -6,6 +6,7 @@ const url = "https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users";
 export const useFetch = () => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
+  const [allData, setAllData] = useState([]);
 
   const getUsers = async () => {
     const response = await fetch(url);
@@ -13,11 +14,12 @@ export const useFetch = () => {
     console.log(data);
 
     setData(paginate(data));
+    setAllData(data);
     setLoading(false);
   };
 
   useEffect(() => {
     getUsers();
   }, []);
-  return { loading, data };
+  return { loading, data, allData };
 };

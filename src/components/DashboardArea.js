@@ -51,6 +51,12 @@ const DashboardArea = () => {
     });
   };
 
+  const [value, setValue] = useState(0);
+
+  const handleChange = (e) => {
+    setValue(e.target.value);
+  };
+
   const closeForm = () => {
     setOrganization(false);
   };
@@ -179,14 +185,6 @@ const DashboardArea = () => {
           </div>
         </div>
         <div className="last_part">
-          <div className="showing">
-            <p>Showing</p>
-            <select className="select">
-              <option>100</option>
-            </select>
-            <p>out of 100</p>
-          </div>
-
           {!loading && (
             <div className="page_btn_div">
               <button onClick={prevPage} className="arrow-btn">
